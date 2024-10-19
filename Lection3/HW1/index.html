@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data types</title>
+  </head>
+  <body>
+    <h1>Output of data types to the console</h1>
+    <script>
+      let number = 77;
+      let string = "Hello world!";
+      let boolean = true;
+      let object = { name: "Dana", age: 32 };
+      let array = [1, 2, 3];
+      let func = function () {
+        return "This is function";
+      };
+      let undefinedVar;
+      let nullVar = null;
+      let symbolVar = Symbol("description");
+
+      console.log("Type number:", typeof number);
+      console.log("Type string:", typeof string);
+      console.log("Type boolean:", typeof boolean);
+      console.log("Type object:", typeof object);
+      console.log("Type array:", typeof array);
+      console.log("Type function:", typeof func);
+      console.log("Type undefined:", typeof undefinedVar);
+      console.log("Type null:", typeof nullVar);
+      console.log("Тип symbol:", typeof symbolVar);
+    </script>
+  </body>
+</html>
