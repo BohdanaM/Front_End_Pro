@@ -1,0 +1,47 @@
+<script>
+  let birthYear = prompt("Input your birth year:");
+  if (birthYear === null) {
+    alert("It's a pity that you didn't want to input your birth year");
+  } else {
+    let city = prompt("Which city do you live?");
+    if (city === null) {
+      alert("It's a pity that you didn't want to input your city");
+    } else {
+      let sport = prompt("What is your favorite sport?");
+      if (sport === null) {
+        alert("It's a pity that you didn't want to input your favorite sport");
+      } else {
+        let currentYear = 2024;
+        let age = currentYear - birthYear;
+
+        let capitalInfo;
+        if (city === "Kyiv") {
+          capitalInfo = "You live in the capital of Ukraine";
+        } else if (city === "Washington") {
+          capitalInfo = "You live in the capital of USA";
+        } else if (city === "London") {
+          capitalInfo = "You live in the capital of Great Britain";
+        } else {
+          capitalInfo = "You live in " + city + ".";
+        }
+
+        let champion;
+        if (sport === "socer") {
+          champion = "Lionel Messi";
+        } else if (sport === "swimings") {
+          champion = "Michael Phelps";
+        } else if (sport === "basketball") {
+          champion = "LeBron James";
+        }
+
+        let sportInfo = champion
+          ? "Cool! Do you want to become " + champion + "?"
+          : "";
+
+        alert(
+          "Your age: " + age + " years.\n" + capitalInfo + "\n" + sportInfo
+        );
+      }
+    }
+  }
+</script>
