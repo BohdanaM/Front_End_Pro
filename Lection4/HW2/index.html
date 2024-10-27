@@ -1,0 +1,22 @@
+<script>
+let number = prompt("Input a three-digit number:");
+
+if (number.length !== 3) {
+  alert("Please input a three-digit number");
+} else {
+  let firstDigit = number[0];
+  let secondDigit = number[1];
+  let thirdDigit = number[2];
+
+  let allEqual = firstDigit === secondDigit && secondDigit === thirdDigit;
+  let hasDuplicates = firstDigit === secondDigit || firstDigit === thirdDigit || secondDigit === thirdDigit;
+
+  if (allEqual) {
+    alert("All digits are the same");
+  } else if (hasDuplicates) {
+    alert("Has the same digits");
+  } else {
+    alert("All digits are different");
+  }
+}
+</script>
