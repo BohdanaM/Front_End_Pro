@@ -1,0 +1,17 @@
+<script>
+  function getNumber() {
+    for (let i = 0; i < 10; i++) {
+      let inputNumber = Number(prompt("Input a number > 100"));
+
+      if (inputNumber > 100) {
+        console.log(`Last input number ${inputNumber}`);
+        return;
+      } else {
+        alert("The number must be > 100. Please try again.");
+      }
+    }
+    alert("You have exhausted all attempts");
+  }
+
+  getNumber();
+</script>
