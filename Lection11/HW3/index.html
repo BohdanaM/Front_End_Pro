@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Image</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+      img {
+        width: 50%;
+        height: 50%;
+        margin-left: 370px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Random Image</h1>
+    <img id="randomImage" src="" />
+
+    <script>
+      window.onload = function () {
+        const images = [
+          "img/1.jpg",
+          "img/2.jpg",
+          "img/3.jpg",
+          "img/4.jpg",
+          "img/5.jpg",
+          "img/6.jpg",
+          "img/7.jpg",
+          "img/8.jpg",
+          "img/9.jpg",
+        ];
+
+        const randomIndex = Math.floor(Math.random() * images.length);
+        const randomImage = images[randomIndex];
+        const image = document.getElementById("randomImage");
+        image.src = randomImage;
+      };
+    </script>
+  </body>
+</html>
