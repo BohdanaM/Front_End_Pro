@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Change Color of Button</title>
+  <style>
+    #text {
+      font-size: 30px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    #changeColorBtn{
+        font-size: 20px;
+        margin-left: 685px;
+    }
+
+    .newColor {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div id="text">Text color</div>
+  <button id="changeColorBtn">Change color</button>
+
+  <script>
+    const text = document.getElementById('text');
+    const button = document.getElementById('changeColorBtn');
+
+    button.addEventListener('click', () => {
+      text.classList.toggle('newColor');
+    });
+  </script>
+</body>
+</html>
