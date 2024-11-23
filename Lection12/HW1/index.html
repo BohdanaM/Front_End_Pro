@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Go to page</title>
+    <style>
+      #inputLinkBtn {
+        font-size: 20px;
+        margin-left: 600px;
+        color: blue;
+      }
+      #goToLinkBtn {
+        font-size: 20px;
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="inputLinkBtn">Input link</button>
+    <button id="goToLinkBtn">Go to link</button>
+
+    <script>
+      let userLink = "";
+      let inputLinkBtn = document.getElementById("inputLinkBtn");
+      let goToLinkBtn = document.getElementById("goToLinkBtn");
+
+      inputLinkBtn.addEventListener("click", function () {
+        userLink = prompt("Input link:");
+      });
+
+      goToLinkBtn.addEventListener("click", function () {
+        if (userLink === "") {
+          alert("Please enter a link!");
+        } else {
+          location.href = userLink;
+        }
+      });
+    </script>
+  </body>
+</html>

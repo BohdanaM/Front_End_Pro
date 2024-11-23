@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To do list</title>
+    <style>
+      #taskList li {
+        font-size: 26px;
+      }
+
+      #taskList li button {
+        font-size: 20px;
+      }
+
+      input[type="text"],
+      button {
+        font-size: 22px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>To do list</h1>
+
+    <ul id="taskList">
+      <li>Task 1 <button class="deleteBtn">Delete</button></li>
+      <li>Task 2 <button class="deleteBtn">Delete</button></li>
+      <li>Task 3 <button class="deleteBtn">Delete</button></li>
+    </ul>
+
+    <input type="text" id="taskInput" placeholder="Input task" />
+    <button id="addTaskBtn">Add task</button>
+    <script>
+      const taskInput = document.getElementById("taskInput");
+      const addTaskBtn = document.getElementById("addTaskBtn");
+      const taskList = document.getElementById("taskList");
+
+      function addTask() {
+        const taskText = taskInput.value;
+
+        if (taskText !== "") {
+          const newTask = document.createElement("li");
+          newTask.textContent = taskText;
+
+          const deleteButton = document.createElement("button");
+          deleteButton.textContent = "Delete";
+          deleteButton.classList.add("deleteBtn");
+
+          newTask.appendChild(deleteButton);
+
+          taskList.appendChild(newTask);
+        }
+      }
+
+      addTaskBtn.addEventListener("click", addTask);
+
+      taskList.addEventListener("click", function (event) {
+        const listItem = event.target.parentElement;
+        listItem.remove();
+      });
+    </script>
+  </body>
+</html>
