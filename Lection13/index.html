@@ -89,59 +89,57 @@
     </form>
 
     <script>
-      document
-        .getElementById("contactForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
+      const subType = "POST";
+      const subAddress = "http://example.com/submit";
+      const form = document.getElementById("contactForm");
 
-          document
-            .querySelectorAll(".error")
-            .forEach((error) => (error.textContent = ""));
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-          const name = document.getElementById("name").value.trim();
-          const message = document.getElementById("message").value.trim();
-          const phone = document.getElementById("phone").value.trim();
-          const email = document.getElementById("email").value.trim();
+        document
+          .querySelectorAll(".error")
+          .forEach((error) => (error.textContent = ""));
 
-          let isValid = true;
+        const formData = new FormData(form);
+        const values = Object.fromEntries(formData);
+        console.log("Form data:", values);
 
-          if (!name) {
-            document.getElementById("nameError").textContent =
-              "Name is required";
-            isValid = false;
-          }
+        let isValid = true;
 
-          if (message.length < 5) {
-            document.getElementById("messageError").textContent =
-              "Message must be at least 5 characters";
-            isValid = false;
-          }
+        if (!values.name) {
+          document.getElementById("nameError").textContent = "Name is required";
+          isValid = false;
+        }
 
-          const phoneRegex = /^\+380\d{9}$/;
-          if (!phoneRegex.test(phone)) {
-            document.getElementById("phoneError").textContent =
-              "Phone number must start with +380";
-            isValid = false;
-          }
+        if (values.message.length < 5) {
+          document.getElementById("messageError").textContent =
+            "Message must be at least 5 characters";
+          isValid = false;
+        }
 
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (!emailRegex.test(email)) {
-            document.getElementById("emailError").textContent =
-              "Invalid email format";
-            isValid = false;
-          }
+        const phoneRegex = /^\+380\d{9}$/;
+        if (!phoneRegex.test(values.phone)) {
+          document.getElementById("phoneError").textContent =
+            "Phone number must start with +380";
+          isValid = false;
+        }
 
-          if (isValid) {
-            console.log({
-              name,
-              message,
-              phone,
-              email,
-            });
-            alert("Message sent successfully!");
-            document.getElementById("contactForm").reset();
-          }
-        });
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(values.email)) {
+          document.getElementById("emailError").textContent =
+            "Invalid email format";
+          isValid = false;
+        }
+
+        if (isValid) {
+          console.log(values);
+          console.log(subType);
+          console.log(subAddress);
+
+          alert("Message sent successfully!");
+          form.reset();
+        }
+      });
     </script>
   </body>
 </html>
