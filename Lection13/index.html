@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+    <style>
+      body {
+        background-color: #f9f9f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      form {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        width: 100%;
+        max-width: 400px;
+      }
+
+      h2 {
+        color: #ff4d6d;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      h3 {
+        color: grey;
+        text-align: center;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+      }
+
+      .error {
+        color: red;
+        font-size: 16px;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #13a4fe;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="contactForm" novalidate>
+      <h2>We would like to help you</h2>
+      <input type="text" id="name" name="name" placeholder="Name" required />
+      <span class="error" id="nameError"></span>
+      <textarea id="message" name="message" placeholder="Message"></textarea>
+      <span class="error" id="messageError"></span>
+      <h3>How to answer you?</h3>
+      <input
+        type="text"
+        id="phone"
+        name="phone"
+        placeholder="Phone number"
+        required
+      />
+      <span class="error" id="phoneError"></span>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Email"
+        required
+      />
+      <span class="error" id="emailError"></span>
+      <button type="submit">Send message</button>
+    </form>
+
+    <script>
+      const subType = "POST";
+      const subAddress = "http://example.com/submit";
+      const form = document.getElementById("contactForm");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        document
+          .querySelectorAll(".error")
+          .forEach((error) => (error.textContent = ""));
+
+        const formData = new FormData(form);
+        const values = Object.fromEntries(formData);
+        console.log("Form data:", values);
+
+        let isValid = true;
+
+        if (!values.name) {
+          document.getElementById("nameError").textContent = "Name is required";
+          isValid = false;
+        }
+
+        if (values.message.length < 5) {
+          document.getElementById("messageError").textContent =
+            "Message must be at least 5 characters";
+          isValid = false;
+        }
+
+        const phoneRegex = /^\+380\d{9}$/;
+        if (!phoneRegex.test(values.phone)) {
+          document.getElementById("phoneError").textContent =
+            "Phone number must start with +380";
+          isValid = false;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(values.email)) {
+          document.getElementById("emailError").textContent =
+            "Invalid email format";
+          isValid = false;
+        }
+
+        if (isValid) {
+          console.log(values);
+          console.log(subType);
+          console.log(subAddress);
+
+          alert("Message sent successfully!");
+          form.reset();
+        }
+      });
+    </script>
+  </body>
+</html>
