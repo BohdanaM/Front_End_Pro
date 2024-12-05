@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slider</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 700px;
+      }
+
+      .slider {
+        position: relative;
+        width: 90%;
+        overflow: hidden;
+        background: #edebeb;
+        border-radius: 10px;
+      }
+
+      .slides {
+        display: flex;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .slide {
+        min-width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .slide img {
+        width: 30%;
+        border-radius: 10px;
+        margin-right: 20px;
+        margin-left: 20px;
+      }
+
+      .slide-content {
+        font-size: 20px;
+      }
+
+      .slide-content h6 {
+        margin: 0 0 10px;
+        font-size: 16px;
+        color: #2974ec;
+      }
+
+      .slide-content p {
+        margin: 0;
+        font-size: 22px;
+        color: #f22753;
+      }
+
+      .navigation {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .navigation button {
+        background: rgba(52, 120, 245, 0.928);
+        border: none;
+        color: white;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 50%;
+      }
+
+      .navigation button:disabled {
+        background: rgba(80, 174, 233, 0.2);
+        cursor: not-allowed;
+      }
+
+      .dots {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        margin: 0 5px;
+        background: rgba(48, 162, 233, 0.613);
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      .dot.active {
+        background: rgba(52, 120, 245, 0.928);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slider">
+      <div class="slides">
+        <div class="slide">
+          <img src="img/1.jpeg" alt="Image 1" />
+          <div class="slide-content">
+            <h6>КОМАНДА></h6>
+            <p>
+              Ми звикли брати на себе відповідальність та завжди гарантуємо
+              чесну, вчасну допомогу, навіть у ситуаціях, коли більшість
+              безсилі.
+            </p>
+            <br /><strong>Олександр Олександровський</strong><br />Керуючий
+            партнер
+          </div>
+        </div>
+        <div class="slide">
+          <img src="img/2.jpeg" alt="Image 2" />
+          <div class="slide-content">
+            <h6>КОМАНДА></h6>
+            <p>
+              Ми звикли брати на себе відповідальність та завжди гарантуємо
+              чесну, вчасну допомогу, навіть у ситуаціях, коли більшість
+              безсилі.
+            </p>
+            <br /><strong>Олександр Олександровський</strong><br />Керуючий
+            партнер
+          </div>
+        </div>
+        <div class="slide">
+          <img src="img/3.jpeg" alt="Image 3" />
+          <div class="slide-content">
+            <h6>КОМАНДА></h6>
+            <p>
+              Ми звикли брати на себе відповідальність та завжди гарантуємо
+              чесну, вчасну допомогу, навіть у ситуаціях, коли більшість
+              безсилі.
+            </p>
+            <br /><strong>Олександр Олександровський</strong><br />Керуючий
+            партнер
+          </div>
+        </div>
+      </div>
+      <div class="navigation">
+        <button id="prev">&#10094;</button>
+        <button id="next">&#10095;</button>
+      </div>
+      <div class="dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+
+    <script>
+      const slides = document.querySelector(".slides");
+      const prevBtn = document.getElementById("prev");
+      const nextBtn = document.getElementById("next");
+      const dots = document.querySelectorAll(".dot");
+
+      let currentSlide = 0;
+      const allSlides = dots.length;
+
+      function updateSlider() {
+        slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+        prevBtn.disabled = currentSlide === 0;
+        nextBtn.disabled = currentSlide === allSlides - 1;
+
+        dots.forEach((dot, index) => {
+          dot.classList.toggle("active", index === currentSlide);
+        });
+      }
+
+      nextBtn.addEventListener("click", () => {
+        if (currentSlide < allSlides - 1) {
+          currentSlide++;
+          updateSlider();
+        }
+      });
+
+      prevBtn.addEventListener("click", () => {
+        if (currentSlide > 0) {
+          currentSlide--;
+          updateSlider();
+        }
+      });
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          currentSlide = index;
+          updateSlider();
+        });
+      });
+
+      updateSlider();
+    </script>
+  </body>
+</html>
