@@ -2,7 +2,7 @@ const form = document.querySelector(".js--form");
 const formInput = document.querySelector(".js--form__input");
 const tasksWrapper = document.querySelector(".js--todos-wrapper");
 
-let tasks = JSON.parse(localStorage.getItem("tasks"));
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 function saveToLocalStorage() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
