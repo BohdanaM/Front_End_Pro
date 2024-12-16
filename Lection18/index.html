@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timer</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+      }
+      .timer {
+        font-size: 70px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="timer" id="timer">00:00</div>
+
+    <script>
+      let startTimeInSeconds = 85;
+
+      function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60)
+          .toString()
+          .padStart(2, "0");
+        const leftSeconds = (seconds % 60).toString().padStart(2, "0");
+        return `${minutes}:${leftSeconds}`;
+      }
+
+      const timer = document.getElementById("timer");
+
+      function updateTimer() {
+        timer.textContent = formatTime(startTimeInSeconds);
+        if (startTimeInSeconds > 0) {
+          startTimeInSeconds--;
+        } else {
+          clearTimeout(timerTimeout);
+        }
+      }
+
+      updateTimer();
+      const timerTimeout = setInterval(updateTimer, 1000);
+    </script>
+  </body>
+</html>
