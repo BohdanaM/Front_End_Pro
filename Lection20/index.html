@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1 class="text-center mb-4">To Do List</h1>
+      <form class="form js--form d-flex gap-2 mb-3">
+        <input
+          type="text"
+          name="value"
+          required
+          class="form-control js--form__input"
+          placeholder="Додати нове завдання"
+        />
+        <button type="submit" class="btn btn-primary">Додати</button>
+      </form>
+      <ul class="list-group js--todos-wrapper">
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center todo-item"
+        >
+          <input type="checkbox" class="me-2" />
+          <span class="todo-item__description">Текст завдання</span>
+          <button class="btn btn-danger btn-sm todo-item__delete">
+            Видалити
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div class="modal fade" tabindex="-1" id="taskModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="taskModalLabel">Ваше завдання</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p id="taskText">Текст завдання</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Закрити
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
