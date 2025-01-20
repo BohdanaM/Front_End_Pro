@@ -1,0 +1,2 @@
+body{display:flex;justify-content:center;align-items:center;height:100vh;color:#fff;flex-direction:column}.weather{text-align:center;font-size:24px;font-weight:bold;margin-bottom:20px;background:rgba(9,80,194,0.792);padding:20px;border-radius:10px}.weather h1{font-size:54px;margin-top:5px}.weather .condition{font-size:30px}.details{display:flex;flex-direction:column;font-size:22px;gap:5px}.button{padding:10px 20px;font-size:22px;cursor:pointer;background-color:#007bff;color:white;border:none;border-radius:5px}.button:hover{background-color:#0056b3}
+
